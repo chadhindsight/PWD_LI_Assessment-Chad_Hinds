@@ -168,7 +168,17 @@ Explain state management and lifting state in React. Please include the differen
 
 //Your explanation HERE
 */
+  /* In order to understand what state management is in React, we should first understand what state is. 
+  Within React, state is a built-in object that is used to contain data or information about the component. 
+  A component’s state can change over time and whenever it changes, the component re-renders based on the newly updated state. 
+  For example, let’s say we have a piece of state that contains certain information about a user such as their name, email, and favorite color and we also have a component that displays this user information. When a user changes their favorite color from ‘Green’ to ‘Blue’, that piece of data will be changed in the component’s state and the component will now re-render to display the color ‘Blue’ instead of the previous color ‘Green’. This process is called State Management. 
 
+One cool thing that React allows developers to do is share state across different components. 
+Sharing state can be done by moving it up to the closest common ancestor of the components that need it. 
+For example, If we had a Color component that gets rendered by an UserProfile component we could pass the specific state defined in UserProfile component to the Color Component as props. 
+Managing state in a large React project with numerous components can get tricky, but there are two things that can be used to make this task more manageable: A third party addition called Redux, and React’s built-in Context API. Context allows us to pass state values between components without having to explicitly pass a prop down multiple levels. Redux allows us to have a single store that contains all our application state in one spot. When certain actions get triggered, that action tells our central store how the state should be updated, when the state gets updated, the related components re-render. One of the main differences between the Context API and Redux is that Context comes built in with React and redux is installed separately. Additionally, Redux is oftentimes used with larger applications and Context is better to use with small applications.
+*/
+  
 /* Problem 9 */
 /* 
 Skill: Node/Express
