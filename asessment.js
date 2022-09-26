@@ -187,7 +187,23 @@ How would you explain what Node and Express do to a beginner learner with no exp
 
 Your explanation HERE (2 paragraphs)
 */
+/* 
+  Node: Node is JavaScript runtime environment that allows us to run Javacript code outside of just our web browser. A runtime environment is something that includes all of the tools and features needed to run a specific program, 
+  or in the case of Node.js, a programming language. In the past, the only runtime environment for JavaScript was the browser.
+Chrome, Safari, and Edge had their JavaScript runtimes, but we could not run JavaScript on our computers. Languages like Javascript and Python have to be translated into bytecode, which is then turned into machine code and read by your computer.
+Basically, the main purpose of Node is to translate a JavaScript program into bytecode for a computer to run it.
 
+  Express: Express.js is a free and open-source framework for Node.js that has a broad set of features used to build the backend of our web applications. 
+  Let's take a brief look at something called HTTP verbs to better understand how Express can help us. When you visit a site on your phone or computer, a HTTP request gets sent to the server site you're trying to reach or access and if the request is successful, a positive response gets sent back from the server to you with the site's information and content. 
+  Part of this request includes HTTP verbs. The most common two verbs are GET and POST. Each of these verbs have their distictive purposes, but the main differences between them is that GET should be used only to retrieve data from a server, and POST should be used to send data to the server. 
+  This is where the Express.js framework comes in, we can use it to build our backend and specify what we want to happen when we get request with certain HTTP verbs. Example, if a user makes a request to view a list of photos on our site, our Express server code allows us to specify that those photos should be shown as the response to a successful request.
+  
+  app.get('/', (request, response, next) => {
+  console.log(request);
+  // whatever we specify in response.send() gets sent back to users   
+  response.send('List of photos');
+});
+*/
 /* Problem 10 */
 /*Skill: JavaScript Objects + Classes
 Complete instructions in the cardGame.js file
