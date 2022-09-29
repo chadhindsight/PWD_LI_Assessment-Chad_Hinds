@@ -38,10 +38,6 @@ const db = {};
   // attributes
   aptDate: {
     type: Sequelize.DATE,
-  },
-  email: {
-    type: Sequelize.STRING
-    // allowNull defaults to true
   }
 });
 */
@@ -73,3 +69,11 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
