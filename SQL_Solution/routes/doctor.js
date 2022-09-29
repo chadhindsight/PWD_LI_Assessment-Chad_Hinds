@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Doctor = require('../models/Doctor');
+const Doctor = require('../models/index');
 
 // Create
 router.post(('/doctors', async (req, res) => {
@@ -81,3 +81,5 @@ router.delete('/doctors/:id', async (req, res) => {
         return res.status(500).send(error.message);
     }
 })
+
+module.exports = router;

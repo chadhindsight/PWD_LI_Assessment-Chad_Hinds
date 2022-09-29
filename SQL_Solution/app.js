@@ -1,7 +1,12 @@
+const express = require('express');
+const bodyParser = require('body-parser');
 
+const app = express();
 
-app.use('/gigs', require('./routes/index.js'));
+app.use(bodyParser.urlencoded());
 
-const PORT = process.env.PORT || 5000;
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

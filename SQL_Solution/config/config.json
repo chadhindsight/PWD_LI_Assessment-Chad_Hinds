@@ -3,21 +3,21 @@
     "username": "chadhindsight",
     "password": "Designer88@",
     "database": "apt-doc",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "chadhindsight",
     "password": "Designer88@",
     "database": "apt-doct",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "chadhindsight",
     "password": "Designer88@",
     "database": "apt-doc",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }

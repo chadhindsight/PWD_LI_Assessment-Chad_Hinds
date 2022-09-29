@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Appointment = require('../models/Appointment')
+const Appointment = require('../models/index')
 
 // Create an appointment
 router.post(('/appointments', async (req, res) => {
@@ -81,3 +81,4 @@ router.delete('/appointments/:id', async (req, res) => {
         return res.status(500).send(error.message);
     }
 })
+module.exports = router;

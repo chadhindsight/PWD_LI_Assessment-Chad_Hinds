@@ -1,5 +1,4 @@
 'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -35,7 +34,6 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
 sequelize
   .authenticate()
   .then(() => {
@@ -44,3 +42,70 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+const Patient = db.sequelize.define('patient', {
+  // attributes
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  email: {
+    type: Sequelize.STRING
+    // allowNull defaults to true
+  },
+  patId: Sequelize.INTEGER
+});
+
+Patient.associate = function () {
+  Patient.hasMany(Appointment, {
+    foreignKey: 'aptID',
+    onDelete: 'CASCADE',
+  });
+};
+
+module.exports = Patient
+
+const Doctor = db.sequelize.define('doctor', {
+  // attributes
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  email: {
+    type: Sequelize.STRING
+    // allowNull defaults to true
+  },
+  docID: Sequelize.INTEGER
+});
+
+Doctor.associate = function () {
+  Doctor.hasMany(Appointment, {
+    foreignKey: 'aptID',
+    onDelete: 'CASCADE',
+  });
+};
+
+module.exports = Doctor
+
+
+
+const Appointment = db.sequelize.define('appointment', {
+  aptDate: {
+    type: Sequelize.DATE,
+  },
+  aptID: Sequelize.INTEGER
+});
+
+Appointment.belongsTo(Doctor, {
+  foreignKey: 'userId',
+  onDelete: 'CASCADE',
+})
+
+Appointment.belongsTo(Patient, {
+  foreignKey: 'userId',
+  onDelete: 'CASCADE',
+})
+
+module.exports = Appointment
+
+module.exports = db;
