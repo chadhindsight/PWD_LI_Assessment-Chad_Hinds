@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const Doctor = sequelize.define('doctor', {
+const Doctor = Sequelize.define('doctor', {
     // attributes
     name: {
         type: Sequelize.STRING,
@@ -15,7 +15,7 @@ const Doctor = sequelize.define('doctor', {
 
 Doctor.associate = function (models) {
     // associations can be defined here
-    Doctor.hasMany(models.Apts, {
+    Doctor.hasMany(models.Appointment, {
         foreignKey: 'aptID',
         onDelete: 'CASCADE',
     });

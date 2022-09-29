@@ -9,39 +9,6 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
-/* My stuff
-  const Doctor = sequelize.define('doctor', {
-  // attributes
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING
-    // allowNull defaults to true
-  }
-});
-
-  const Patient = sequelize.define('patient', {
-  // attributes
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING
-    // allowNull defaults to true
-  }
-});
-
-  const Appointment = sequelize.define('appointment', {
-  // attributes
-  aptDate: {
-    type: Sequelize.DATE,
-  }
-});
-*/
-
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const Appointment = sequelize.define('appointment', {
+const Appointment = Sequelize.define('appointment', {
     aptDate: {
         type: Sequelize.DATE,
     },
