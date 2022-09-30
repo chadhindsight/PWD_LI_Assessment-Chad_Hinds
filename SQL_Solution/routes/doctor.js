@@ -5,7 +5,6 @@ const Doctor = require('../models/index');
 // Create
 router.post(('/doctors', async (req, res) => {
     try {
-        console.log('docs')
         const newDoc = await Doctor.create(req.body);
         return res.send(newDoc)
     }
