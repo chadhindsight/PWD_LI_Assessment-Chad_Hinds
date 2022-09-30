@@ -5,6 +5,7 @@ const Doctor = require('../models/index');
 // Create
 router.post(('/doctors', async (req, res) => {
     try {
+        console.log('docs')
         const newDoc = await Doctor.create(req.body);
         return res.send(newDoc)
     }
@@ -29,7 +30,7 @@ router.get('/doctors', async (req, res) => {
     try {
         const appointment = await Doctor.findOne({
             where: {
-                id: req.params.id
+                docID: req.params.id
             }
         });
         return res.send(appointment)
@@ -45,11 +46,11 @@ router.patch('/doctors/:id', async (req, res) => {
         const id = req.params.id;
         const updated = await Doctor.update(req.body,
             {
-                where: { id: id }
+                where: { docID: id }
             });
 
         if (updated) {
-            const updatedDoc = await Doctor.findOne({ where: { id: id } });
+            const updatedDoc = await Doctor.findOne({ where: { docID: id } });
             return res.status(200).send(updatedDoc)
         }
         else {
@@ -67,7 +68,7 @@ router.delete('/doctors/:id', async (req, res) => {
         const id = req.params.id;
         const deleted = await Doctor.destroy(
             {
-                where: { id: id }
+                where: { docID: id }
             });
 
         if (deleted) {

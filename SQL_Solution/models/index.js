@@ -66,7 +66,6 @@ Patient.associate = function () {
 module.exports = Patient
 
 const Doctor = db.sequelize.define('doctor', {
-  // attributes
   name: {
     type: Sequelize.STRING,
     allowNull: false
