@@ -37,7 +37,7 @@ render(){
 }
 }
 React.render(
-  //#5 Implement the APICaller component appropiately into the render method
+  //#5 Implement the APICaller component appropriately into the render method
   <APICaller />, 
   , document.getElementById('myapicaller'),
   ()=>{
@@ -66,7 +66,7 @@ function myRecursiveFunction(num){
      // Each time myRecursiveFunction will call itself with a different value for the 'num' parameter
     num--;
     // If num is 3, the next time myRecursiveFunction will be called like myRecursiveFunction(2), and then myRecursiveFunction(1).
-    countDown(num);
+    myRecursiveFunction(num);
 }
 
 
@@ -88,7 +88,7 @@ process.
 */
 
 /*Bubble sort example HERE*/
-function countSwaps(a) {
+function sortArr(a) {
     let sortCount = 0;
     for (let i = 0; i < a.length; i++) {
 
@@ -105,6 +105,8 @@ function countSwaps(a) {
                 sortCount += 1;
             }
         }
+    }
+    return a 
 }
 
 /* Problem 5 */
@@ -141,17 +143,39 @@ solve the following leetcode in JavaScript:
 
 https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/
 and paste your solution here. Please comment each line of your code to explain it, and be prepared to explain in the follow up interview. */
-  var longestSubstring = function (s, k) {
-    let longestSubstring = 0;
+
+var longestSubstring = function (s, k) {
+    // Store the number of times each letter is encountered
+    let mapOfLetters = {};
     for (let i = 0; i < s.length; i++) {
-        for (let j = i; j < s.length; j++) {
-            const substring = s.substr(i, j - i + 1);
-            if (areAllLettersSeenNTimes(substring, k)) {
-                longestSubstring = Math.max(longestSubstring, substring.length);
-            }
+        mapOfLetters[s[i]] = mapOfLetters[s[i]] ? mapOfLetters[s[i]] + 1 : 1;
+    }
+
+    // If the entire string is made up of valid letters, return its full length
+    if (Object.values(mapOfLetters).every((val) => val >= k)) return s.length;
+
+    let longestSubstringFound = 0;
+    let currentStart = 0;
+    for (let i = 0; i < s.length; i++) {
+        // If we've reached a breaking point (character that does not appear k times)
+        if (mapOfLetters[s[i]] < k) {
+            // Find the longest valid substring of the current string, and compare it with the longest found so far
+            longestSubstringFound = Math.max(
+                longestSubstring(s.substr(currentStart, i - currentStart), k),
+                longestSubstringFound
+            );
+
+            // Move onto the next character in the string
+            currentStart = i + 1;
         }
     }
-    return longestSubstring;
+    // Check if current substring would have been the longest if a breaking point had been encountered
+    longestSubstringFound = Math.max(
+        longestSubstring(s.substr(currentStart), k),
+        longestSubstringFound
+    );
+
+    return longestSubstringFound > 1 ? longestSubstringFound : 0;
 };
 
 /* Problem 7 */
