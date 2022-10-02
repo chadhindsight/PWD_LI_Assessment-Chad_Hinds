@@ -154,28 +154,28 @@ var longestSubstring = function (s, k) {
     // If the entire string is made up of valid letters, return its full length
     if (Object.values(mapOfLetters).every((val) => val >= k)) return s.length;
 
-    let longestSubstringFound = 0;
+    let longestSubstringSoFar = 0;
     let currentStart = 0;
     for (let i = 0; i < s.length; i++) {
         // If we've reached a breaking point (character that does not appear k times)
         if (mapOfLetters[s[i]] < k) {
             // Find the longest valid substring of the current string, and compare it with the longest found so far
-            longestSubstringFound = Math.max(
+            longestSubstringSoFar = Math.max(
                 longestSubstring(s.substr(currentStart, i - currentStart), k),
-                longestSubstringFound
+                longestSubstringSoFar
             );
 
-            // Move onto the next character in the string
+            // Move to the next character in the string
             currentStart = i + 1;
         }
     }
-    // Check if current substring would have been the longest if a breaking point had been encountered
-    longestSubstringFound = Math.max(
+    // Check if the current substring would have been the longest if a breaking point had been encountered
+    longestSubstringSoFar = Math.max(
         longestSubstring(s.substr(currentStart), k),
-        longestSubstringFound
+        longestSubstringSoFar
     );
 
-    return longestSubstringFound > 1 ? longestSubstringFound : 0;
+    return longestSubstringSoFar > 1 ? longestSubstringSoFar : 0;
 };
 
 /* Problem 7 */
