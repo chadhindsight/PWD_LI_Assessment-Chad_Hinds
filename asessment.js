@@ -54,7 +54,8 @@ Please write an example of a recursive function, and comment each line
 
 /* 
   Answer: At a broad level, recursion is the process where a function calls itself multiple times until a certain condition is met. For example, if we wanted a
-  function that counts down from a chosen number to zero, we can use recursion to do so. There are two things needed to make a recursive function: 
+  function that counts down from a chosen number to zero, we can use recursion to do so. 
+  Every recursive function needs a base case which is the condition needed to determine when recursion should stop.
 */
 
 function myRecursiveFunction(num){
