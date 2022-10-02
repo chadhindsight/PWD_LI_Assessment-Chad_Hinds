@@ -31,7 +31,7 @@ class APICaller extends React.Component{
 render(){
   return <div>
     <button 
-  //#4 Implement an onCLick functionality to the button such that it calls the callApi() function when it is clicked. 
+  //#4 Implement an onClick functionality to the button such that it calls the callApi() function when it is clicked. 
     onClick={callApi}>Call the API now.</button>
   </div>
 }
@@ -90,7 +90,7 @@ process.
 
 /*Bubble sort example HERE*/
 function sortArr(a) {
-    let sortCount = 0;
+    // Loop through the unsorted array
     for (let i = 0; i < a.length; i++) {
 
         for (let j = 0; j < a.length - 1; j++) {
@@ -103,7 +103,6 @@ function sortArr(a) {
                 a[j] = a[j + 1];
                
                 a[j + 1] = temp;
-                sortCount += 1;
             }
         }
     }
@@ -118,24 +117,17 @@ https://leetcode.com/problems/house-robber/
 
 and paste your solution here. Please comment each line of your code to explain it, and be prepared to explain in the follow up interview.
 */
-let houses = [4, 56, 4, 100, 34, 5];
-// let houses = [3];
-
 var rob = function(nums) {
     // handles cases where we only have 0 or 1 element in the list of houses
     if (nums.length === 0) return 0;
     if (nums.length === 1) return nums[0]
+    if(nums.length === 2) return Math.max(nums[0], nums[1])
+  
     
-    // Keep track of the Maximum
-    let maxes = [nums[0], Math.max(nums[0], nums[1])];
-    
-      for (let i = 2; i < nums.length; i++) {
-        // Compare current max with the previous max
-        // Check if the money from the current house + max of 2 houses away is greater than the current max
-    maxes[i] = Math.max(maxes[i-2] + nums[i], maxes[i-1]);
+    for(let i =2; i < nums.length; i++) {
+      nums[i] = Math.max(nums[i -2] + nums[i], (nums[i -3] || 0) + nums[i])
     }
-    // return the maximum number
-    return maxes[nums.length - 1];
+    return Math.max(nums[nums.length -1], nums[nums.length -2])
 };
   
 /* Problem 6 */
