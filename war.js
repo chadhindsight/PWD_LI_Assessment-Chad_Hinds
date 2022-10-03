@@ -25,9 +25,8 @@ class Card {
 
 // Create a Deck class 
 class Deck {
-    constructor(cards) {
-        cards = this.generateCards(SUITS, VALUES)
-        this.cards = cards
+    constructor() {
+        this.cards = this.generateCards()
     }
     // Create a method on the Deck class that dynamically generates each card object
     generateCards() {
@@ -53,13 +52,13 @@ class Player extends Deck {
 }
 
 // card objects can be held inside an array 
-let playingDeck = new Deck([SUITS, VALUES])
+let playingDeck = new Deck()
 
 const deckMidpoint = Math.ceil(playingDeck.numberOfCards / 2)
 
 // Player and Computer decks
 let player = new Player(playingDeck.cards.slice(0, deckMidpoint));
-let computer = new Player(playingDeck.cards.slice(deckMidpoint, playingDeck.numberOfCards - 1));
+let computer = new Player(playingDeck.cards.slice(deckMidpoint, playingDeck.numberOfCards));
 
 function compareCards() {
     // get random card from each deck and compare their values
@@ -77,8 +76,8 @@ function compareCards() {
 
     // tie
     else {
-        return `${card2.value} and ${card1.value} have equal value, Tie!`
+        return `${card2.value} and ${card1.value} are equal value, Tie!`
     }
 }
 
-console.log(compareCards())
+console.log(player.cards.length)
