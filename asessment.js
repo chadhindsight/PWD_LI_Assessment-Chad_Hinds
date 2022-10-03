@@ -3,7 +3,7 @@
 You want to grow a new branch from any commit. Identify the code you will use to swtich to "HEAD-5" and create a branch named 'testbranch'
 */
 //YOUR CODE HERE
-// git checkout HEAD @5
+// git checkout HEAD~5
 // git checkout - b testbranch
 
 /* Problem 2 */
