@@ -3,8 +3,8 @@
 You want to grow a new branch from any commit. Identify the code you will use to swtich to "HEAD-5" and create a branch named 'testbranch'
 */
 //YOUR CODE HERE
-git checkout HEAD@5
-git checkout -b testbranch
+// git checkout HEAD @5
+// git checkout - b testbranch
 
 /* Problem 2 */
 /*Skill: React, API call  
@@ -16,31 +16,31 @@ complete the code as per the given instructions:
 */
 
 
-class APICaller extends React.Component{
-  callApi(){
+class APICaller extends React.Component {
+  callApi() {
     //#1 Implement a fetch method with the given API ENDPOINT
-   fetch('https://www.reddit.com/r/react.json') 
-    .then((result)=>{
-      //#2 Return the result in json format
-      return result.json()
-    }).then((jsonData)=>{
-      //#3 Print/log the jsonData in the console of the browser
-      console.log(jsonData) 
-    })
+    fetch('https://www.reddit.com/r/react.json')
+      .then((result) => {
+        //#2 Return the result in json format
+        return result.json()
+      }).then((jsonData) => {
+        //#3 Print/log the jsonData in the console of the browser
+        console.log(jsonData)
+      })
   }
-render(){
-  return <div>
-    <button 
-  //#4 Implement an onCLick functionality to the button such that it calls the callApi() function when it is clicked. 
-    onClick={callApi}>Call the API now.</button>
-  </div>
-}
+  render() {
+    return <div>
+      <button
+        //#4 Implement an onClick functionality to the button such that it calls the callApi() function when it is clicked. 
+        onClick={callApi}>Call the API now.</button>
+    </div>
+  }
 }
 React.render(
-  //#5 Implement the APICaller component appropiately into the render method
+  //#5 Implement the APICaller component appropriately into the render method
   <APICaller />, 
   , document.getElementById('myapicaller'),
-  ()=>{
+  () => {
     console.log("Successfully rendered the APICaller componnet");
   })
 
@@ -54,19 +54,20 @@ Please write an example of a recursive function, and comment each line
 
 /* 
   Answer: At a broad level, recursion is the process where a function calls itself multiple times until a certain condition is met. For example, if we wanted a
-  function that counts down from a chosen number to zero, we can use recursion to do so. There are two things needed to make a recursive function: 
+  function that counts down from a chosen number to zero, we can use recursion to do so. 
+  Every recursive function needs a base case which is the condition needed to determine when recursion should stop.
 */
 
-function myRecursiveFunction(num){
+function myRecursiveFunction(num) {
   //This check handles cases where num is too small to be processed recursively
-  if(num <= 0) {
-        return "All done!";
-    }
-     console.log(num);
-     // Each time myRecursiveFunction will call itself with a different value for the 'num' parameter
-    num--;
-    // If num is 3, the next time myRecursiveFunction will be called like myRecursiveFunction(2), and then myRecursiveFunction(1).
-    countDown(num);
+  if (num <= 0) {
+    return "All done!";
+  }
+  console.log(num);
+  // Each time myRecursiveFunction will call itself with a different value for the 'num' parameter
+  num--;
+  // If num is 3, the next time myRecursiveFunction will be called like myRecursiveFunction(2), and then myRecursiveFunction(1).
+  myRecursiveFunction(num);
 }
 
 
@@ -88,23 +89,24 @@ process.
 */
 
 /*Bubble sort example HERE*/
-function countSwaps(a) {
-    let sortCount = 0;
-    for (let i = 0; i < a.length; i++) {
+function sortArr(a) {
+  // Loop through the unsorted array
+  for (let i = 0; i < a.length; i++) {
 
-        for (let j = 0; j < a.length - 1; j++) {
+    for (let j = 0; j < a.length - 1; j++) {
 
-            if (a[j] > a[j + 1]) {
-                // store current val as a variable
-                let temp = a[j];
+      if (a[j] > a[j + 1]) {
+        // store current val as a variable
+        let temp = a[j];
 
-              // swap the values of the, current element, next element, the element aftet next 
-                a[j] = a[j + 1];
-               
-                a[j + 1] = temp;
-                sortCount += 1;
-            }
-        }
+        // swap the values of the, current element, next element, the element aftet next 
+        a[j] = a[j + 1];
+
+        a[j + 1] = temp;
+      }
+    }
+  }
+  return a
 }
 
 /* Problem 5 */
@@ -115,43 +117,58 @@ https://leetcode.com/problems/house-robber/
 
 and paste your solution here. Please comment each line of your code to explain it, and be prepared to explain in the follow up interview.
 */
-let houses = [4, 56, 4, 100, 34, 5];
-// let houses = [3];
+var rob = function (nums) {
+  // handles cases where we only have 0 or 1 element in the list of houses
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0]
+  if (nums.length === 2) return Math.max(nums[0], nums[1])
 
-var rob = function(nums) {
-    // handles cases where we only have 0 or 1 element in the list of houses
-    if (nums.length === 0) return 0;
-    if (nums.length === 1) return nums[0]
-    
-    // Keep track of the Maximum
-    let maxes = [nums[0], Math.max(nums[0], nums[1])];
-    
-      for (let i = 2; i < nums.length; i++) {
-        // Compare current max with the previous max
-        // Check if the money from the current house + max of 2 houses away is greater than the current max
-    maxes[i] = Math.max(maxes[i-2] + nums[i], maxes[i-1]);
-    }
-    // return the maximum number
-    return maxes[nums.length - 1];
+
+  for (let i = 2; i < nums.length; i++) {
+    nums[i] = Math.max(nums[i - 2] + nums[i], (nums[i - 3] || 0) + nums[i])
+  }
+  return Math.max(nums[nums.length - 1], nums[nums.length - 2])
 };
-  
+
 /* Problem 6 */
 /*Skill: Leetcode Algorithms
 solve the following leetcode in JavaScript: 
 
 https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/
 and paste your solution here. Please comment each line of your code to explain it, and be prepared to explain in the follow up interview. */
-  var longestSubstring = function (s, k) {
-    let longestSubstring = 0;
-    for (let i = 0; i < s.length; i++) {
-        for (let j = i; j < s.length; j++) {
-            const substring = s.substr(i, j - i + 1);
-            if (areAllLettersSeenNTimes(substring, k)) {
-                longestSubstring = Math.max(longestSubstring, substring.length);
-            }
-        }
+
+var longestSubstring = function (s, k) {
+  // Store the number of times each letter is encountered
+  let mapOfLetters = {};
+  for (let i = 0; i < s.length; i++) {
+    mapOfLetters[s[i]] = mapOfLetters[s[i]] ? mapOfLetters[s[i]] + 1 : 1;
+  }
+
+  // If the entire string is made up of valid letters, return its full length
+  if (Object.values(mapOfLetters).every((val) => val >= k)) return s.length;
+
+  let longestSubstringSoFar = 0;
+  let currentStart = 0;
+  for (let i = 0; i < s.length; i++) {
+    // If we've reached a breaking point (character that does not appear k times)
+    if (mapOfLetters[s[i]] < k) {
+      // Find the longest valid substring of the current string, and compare it with the longest found so far
+      longestSubstringSoFar = Math.max(
+        longestSubstring(s.substr(currentStart, i - currentStart), k),
+        longestSubstringSoFar
+      );
+
+      // Move to the next character in the string
+      currentStart = i + 1;
     }
-    return longestSubstring;
+  }
+  // Check if the current substring would have been the longest if a breaking point had been encountered
+  longestSubstringSoFar = Math.max(
+    longestSubstring(s.substr(currentStart), k),
+    longestSubstringSoFar
+  );
+
+  return longestSubstringSoFar > 1 ? longestSubstringSoFar : 0;
 };
 
 /* Problem 7 */
@@ -168,17 +185,17 @@ Explain state management and lifting state in React. Please include the differen
 
 //Your explanation HERE
 */
-  /* In order to understand what state management is in React, we should first understand what state is. 
-  Within React, state is a built-in object that is used to contain data or information about the component. 
-  A component’s state can change over time and whenever it changes, the component re-renders based on the newly updated state. 
-  For example, let’s say we have a piece of state that contains certain information about a user such as their name, email, and favorite color and we also have a component that displays this user information. When a user changes their favorite color from ‘Green’ to ‘Blue’, that piece of data will be changed in the component’s state and the component will now re-render to display the color ‘Blue’ instead of the previous color ‘Green’. This process is called State Management. 
+/* In order to understand what state management is in React, we should first understand what state is.
+Within React, state is a built-in object that is used to contain data or information about the component. 
+A component’s state can change over time and whenever it changes, the component re-renders based on the newly updated state. 
+For example, let’s say we have a piece of state that contains certain information about a user such as their name, email, and favorite color and we also have a component that displays this user information. When a user changes their favorite color from ‘Green’ to ‘Blue’, that piece of data will be changed in the component’s state and the component will now re-render to display the color ‘Blue’ instead of the previous color ‘Green’. This process is called State Management. 
 
 One cool thing that React allows developers to do is share state across different components. 
 Sharing state can be done by moving it up to the closest common ancestor of the components that need it. 
 For example, If we had a Color component that gets rendered by an UserProfile component we could pass the specific state defined in UserProfile component to the Color Component as props. 
 Managing state in a large React project with numerous components can get tricky, but there are two things that can be used to make this task more manageable: A third party addition called Redux, and React’s built-in Context API. Context allows us to pass state values between components without having to explicitly pass a prop down multiple levels. Redux allows us to have a single store that contains all our application state in one spot. When certain actions get triggered, that action tells our central store how the state should be updated, when the state gets updated, the related components re-render. One of the main differences between the Context API and Redux is that Context comes built in with React and redux is installed separately. Additionally, Redux is oftentimes used with larger applications and Context is better to use with small applications.
 */
-  
+
 /* Problem 9 */
 /* 
 Skill: Node/Express
