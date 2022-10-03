@@ -99,7 +99,7 @@ function sortArr(a) {
         // store current val as a variable
         let temp = a[j];
 
-        // swap the values of the, current element, next element, the element aftet next 
+        // swap the values of the current element and the next element directly after it 
         a[j] = a[j + 1];
 
         a[j + 1] = temp;
