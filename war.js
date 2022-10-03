@@ -80,4 +80,4 @@ function compareCards() {
     }
 }
 
-console.log(player.cards.length)
+console.log(compareCards())
