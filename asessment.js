@@ -99,7 +99,7 @@ function sortArr(a) {
         // store current val as a variable
         let temp = a[j];
 
-        // swap the values of the, current element, next element, the element aftet next 
+        // swap the values of the current element and the next element directly after it 
         a[j] = a[j + 1];
 
         a[j + 1] = temp;
@@ -177,6 +177,7 @@ Please fork and complete this SQL exercise:
 https://gist.github.com/harrisonmalone/e06ea120532e5cd323ef0b0b379fa4d6
 
 LINK TO YOUR REPO HERE
+https://github.com/chadhindsight/PWD_LI_Assessment-Chad_Hinds/tree/main/SQL_Solution
 */
 
 /* Problem 8 */
