@@ -30,7 +30,7 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
-
+// Mans got curved :(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
